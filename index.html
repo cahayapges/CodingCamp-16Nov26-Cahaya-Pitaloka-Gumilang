@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+
+    <!-- decorative mid-page blue blob -->
+    <svg aria-hidden="true" focusable="false"
+         style="position:fixed;top:42%;left:50%;transform:translate(-50%,-50%);
+                width:580px;height:580px;pointer-events:none;z-index:0;opacity:.22"
+         viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#93c5fd"
+        d="M48,-63C60,-52,66,-35,68,-18C70,-1,69,16,62,30C54,44,40,55,24,62C8,68,-10,69,-27,63C-44,56,-59,42,-67,24C-75,6,-76,-15,-68,-32C-60,-49,-43,-61,-26,-67C-9,-72,8,-71,21,-67C34,-62,43,-68,48,-63Z"
+        transform="translate(100 100)"/>
+    </svg>
+
+    <!-- ── TOP BAR ────────────────────────────────────────────── -->
+    <header class="topbar">
+      <span class="topbar-logo">🫧 My Dashboard</span>
+      <button id="theme-toggle" class="btn-theme" aria-label="Toggle theme" title="Toggle light / dark">
+        <span id="theme-icon">🌙</span>
+      </button>
+    </header>
+
+    <!-- ── GREETING ───────────────────────────────────────────── -->
+    <section class="card greeting-card">
+      <div class="greeting-row">
+        <p id="greeting-text" class="greeting"></p>
+        <!-- Inline name editor -->
+        <button id="name-edit-btn" class="btn-name-edit" title="Set your name">✏️</button>
+      </div>
+      <div id="name-form-wrap" class="name-form-wrap hidden">
+        <input id="name-input" class="input name-input" type="text" placeholder="Enter your name…" maxlength="40" />
+        <button id="name-save" class="btn btn-primary btn-sm">Save</button>
+        <button id="name-cancel" class="btn btn-ghost btn-sm">Cancel</button>
+      </div>
+      <p id="date-text" class="date"></p>
+      <p id="time-text" class="time"></p>
+    </section>
+
+    <div class="grid">
+
+      <!-- ── FOCUS TIMER ──────────────────────────────────────── -->
+      <section class="card timer-card">
+        <h2 class="card-title">⏱ Focus Timer</h2>
+        <div id="timer-display" class="timer-display">25:00</div>
+        <div class="timer-controls">
+          <button id="timer-start" class="btn btn-primary">Start</button>
+          <button id="timer-stop"  class="btn btn-secondary">Stop</button>
+          <button id="timer-reset" class="btn btn-ghost">Reset</button>
+        </div>
+      </section>
+
+      <!-- ── TO-DO LIST ────────────────────────────────────────── -->
+      <section class="card todo-card">
+        <h2 class="card-title">✅ To-Do List</h2>
+        <form id="todo-form" class="todo-form" autocomplete="off">
+          <input
+            id="todo-input"
+            class="input"
+            type="text"
+            placeholder="Add a new task…"
+            maxlength="120"
+          />
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+        <p id="todo-error" class="field-error hidden">Task already exists!</p>
+        <ul id="todo-list" class="todo-list"></ul>
+      </section>
+
+      <!-- ── QUICK LINKS ───────────────────────────────────────── -->
+      <section class="card links-card">
+        <h2 class="card-title">🔗 Quick Links</h2>
+        <form id="link-form" class="link-form" autocomplete="off">
+          <input id="link-name" class="input" type="text"  placeholder="Name (e.g. GitHub)" maxlength="40" />
+          <input id="link-url"  class="input" type="url"   placeholder="URL (https://…)" />
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+        <div id="links-list" class="links-list"></div>
+      </section>
+
+    </div>
+
+    <!-- ── EDIT TASK MODAL ────────────────────────────────────── -->
+    <div id="edit-modal" class="modal-overlay hidden">
+      <div class="modal">
+        <h3>Edit Task</h3>
+        <input id="edit-input" class="input" type="text" maxlength="120" />
+        <p id="edit-error" class="field-error hidden">Task already exists!</p>
+        <div class="modal-actions">
+          <button id="edit-save"   class="btn btn-primary">Save</button>
+          <button id="edit-cancel" class="btn btn-ghost">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
